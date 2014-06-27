@@ -18,22 +18,22 @@ sc_cp.checkTitleInterval = null;
 GM_wait();
 
 function checkTitle() {
-    //Check the alt text on the player at the bottom of the screen
+	//Check the alt text on the player at the bottom of the screen
 	var title = sc_cp.JQ("a.playbackTitle__link").attr("title");
 	if(title != undefined && title.substring(0, 28) == "Playing from recommendations") {
-        //Pause the track
+		//Pause the track
 		sc_cp.JQ(".playControl.playing").click();
 	}
 }
 
 function GM_wait() {
-    //Wait for jQuery to load
+	//Wait for jQuery to load
 	if(typeof unsafeWindow.jQuery == 'undefined') {
 		window.setTimeout(GM_wait, 200);
 	}
 	else {
 		sc_cp.JQ = unsafeWindow.jQuery;
-        //Start checking player text
+		//Start checking player text
 		sc_cp.checkTitleInterval = setInterval(checkTitle, 100);
 	}
 }
